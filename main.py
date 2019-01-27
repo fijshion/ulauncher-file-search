@@ -84,6 +84,8 @@ class FileSearchExtension(Extension):
         # some terminals might work differently. This is already prepared for that.
         if terminal_emulator in ['gnome-terminal', 'terminator', 'tilix', 'xfce-terminal']:
             return RunScriptAction(terminal_emulator, ['--working-directory', path])
+        elif terminal_emulator in ['urxvt']:
+            return RunScriptAction(terminal_emulator, ['-cd', path])
 
         return DoNothingAction()
 
